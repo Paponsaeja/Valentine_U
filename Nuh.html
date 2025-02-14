@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Message</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee; /* Light pink background */
+            font-family: 'Dancing Script', cursive; /* Sad/emotional font */
+            text-align: center;
+            /*overflow: hidden; /* Prevents scrollbars when No button moves */
+        }
+
+        h1 {
+            font-size: 3rem; /* Smaller font size for a softer look */
+            color: #d32f2f; /* Deep red color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
+            margin-top: 20px; /* Space between GIF and text */
+        }
+
+        .button-container {
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+            height: 200px; /* Defines a boundary for button movement */
+        }
+
+        .btn {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            position: absolute;
+        }
+
+        .yes-btn {
+            background-color: #d32f2f;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .yes-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        .no-btn {
+            background-color: #757575;
+            color: white;
+            left: 60%; /* Move it slightly to the right */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.2s ease, top 0.2s ease;
+        }
+
+        .no-btn:hover {
+            background-color: #424242;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h2>☹️</h2>
+    <h1>But I want you to be my pookie</h1>
+    <img src="sad-sad-cat.gif" alt="My Picture" style="width: 300px; height: auto;">
+    <h1>Please be my pookie💐🫵</h1>
+
+    <div class="button-container">
+        <button class="btn yes-btn" onclick="window.location.href='confess.html'">Yes</button>
+        <button id="no-btn" class="btn no-btn" onclick="moveNoButton()">No</button>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        function moveNoButton() {
+            let noBtn = document.getElementById("no-btn");
+
+            // Increase click count
+            noClickCount++;
+
+            // If clicked 10 times, show alert
+            if (noClickCount === 10) {
+                alert('Come on babe, just click "YES" ❤️');
+                return; // Stop further movement
+            } 
+            if(noClickCount === 20) {
+                alert('PLease stop reject me 😭');
+                return; // Stop further movement
+            } 
+            if (noClickCount === 30){
+                alert('You will be my girl no matter whats🫵💐');
+                return;
+            }
+
+            let maxX = window.innerWidth - noBtn.clientWidth;
+            let maxY = window.innerHeight - noBtn.clientHeight;
+
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+
+    </script>
+
+</body>
+</html>
